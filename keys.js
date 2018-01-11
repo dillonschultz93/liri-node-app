@@ -1,3 +1,4 @@
+console.log('-----------------')
 console.log('keys.js is loaded')
 
 const twitterKeys = {
