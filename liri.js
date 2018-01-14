@@ -17,6 +17,9 @@ switch(command){
   case 'spotify-this-song':
     nodeCommands.spotifyCommand(value)
   break;
+  case 'movie-this':
+    nodeCommands.omdbCommand(value)
+  break;
   default:
     console.log('---------------------------------')
     console.log('Sorry, that command is not valid.')
