@@ -5,4 +5,9 @@ const twitterKeys = {
   access_token_secret: 'e5Qrs0hggUowPIalGScBUUtadAh69ezUXnyypiBKqtQhZ'
 }
 
-module.exports = twitterKeys
+const spotifyKeys = {
+  id: 'df1218b105b744ee91f50286b7e22fe9',
+  secret: '874c7b4a677f419ababb4197b307ec60'
+}
+
+module.exports = twitterKeys 
