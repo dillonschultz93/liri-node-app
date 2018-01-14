@@ -14,6 +14,9 @@ switch(command){
   case 'my-tweets':
     nodeCommands.twitterCommand()
   break;
+  case 'spotify-this-song':
+    nodeCommands.spotifyCommand(value)
+  break;
   default:
     console.log('---------------------------------')
     console.log('Sorry, that command is not valid.')
