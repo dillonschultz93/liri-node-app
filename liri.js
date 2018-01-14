@@ -7,7 +7,7 @@ const fileSystem = require('fs')
 const command = process.argv[2]
 const value = process.argv[3]
 
-//clear console everytime the file is run
+//clears console everytime the file is run
 process.stdout.write('\x1B[2J\x1B[3J\x1B[H')
 
 switch(command){
