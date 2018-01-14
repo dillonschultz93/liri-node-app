@@ -10,11 +10,6 @@ const spotifyKeys = {
   secret: '874c7b4a677f419ababb4197b307ec60'
 }
 
-// module.exports = {
-//   twitterKeys: twitterKeys
-//   // spotifyKeys: spotifyKeys
-// }
-
 module.exports = {
   twitterKeys: twitterKeys,
   spotifyKeys: spotifyKeys
