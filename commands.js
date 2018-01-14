@@ -1,9 +1,10 @@
-//imports
-const keys = require('./keys.js')
-const Twitter = require('twitter')
-const Spotify = require('node-spotify-api')
-const client = new Twitter(keys)
-// const spotify = new Spotify(keys)
+// imports
+const keys = require('./keys.js') //credentials
+const Twitter = require('twitter') //Twitter API
+const client = new Twitter(keys.twitterKeys)
+const Spotify = require('node-spotify-api') //Spotify API
+const spotify = new Spotify(keys.spotifyKeys)
+
 
 // == TWITTER COMMANDS ========================================================
 const twitterCommand = function() {
@@ -26,16 +27,17 @@ const twitterCommand = function() {
   })
 }
 
-module.exports = {
-  twitterCommand: twitterCommand
-}
-
 // == SPOTIFY COMMANDS ========================================================
 const spotifyCommand = function(value) {
   spotify.search({type: 'track', query: `${value}`}, function(error, data){
     if(error){
       return console.log(error)
     }
-    console.log(data)
+    console.log(data.tracks.items)
   })
-} 
+}
+
+module.exports = {
+  twitterCommand: twitterCommand,
+  spotifyCommand: spotifyCommand
+}
