@@ -4,6 +4,7 @@ const Twitter = require('twitter') //Twitter API
 const client = new Twitter(keys.twitterKeys)
 const Spotify = require('node-spotify-api') //Spotify API
 const spotify = new Spotify(keys.spotifyKeys)
+const request = require ('request') //Request package
 
 
 // == TWITTER COMMANDS ========================================================
@@ -16,14 +17,14 @@ const twitterCommand = function() {
       // loops through the JSON array and returns usernames, tweet dates, and
       // tweet text
       tweets.forEach((item, index) => {
-        const content = {
+        const queryResults = {
           userName: `@${item.entities.user_mentions[0].screen_name}`,
           date: item.created_at,
           text: item.text
         }
         console.log(`🐣 ${index + 1}`)
         console.log('--------------------------')
-        console.log(JSON.stringify(content, null, 2))
+        console.log(JSON.stringify(queryResults, null, 2))
         console.log('\n')
       })
     }
@@ -54,7 +55,25 @@ const spotifyCommand = function(value) {
 
 // == OMDB COMMANDS ===========================================================
 const omdbCommand = function(value) {
-  
+  // variable that stores the movie title from the 4th node argument
+  let queryUrl = `http://www.omdbapi.com/?t=${value}&y=&plot=short&apikey=40e9cece`
+  request(queryUrl, function(error, response, body){
+    if (!error && response.statusCode === 200) {
+      const queryResults = {
+        title: JSON.parse(body).Title,
+        year: JSON.parse(body).Year,
+        ratings: {
+            imdb: JSON.parse(body).imdbRating,
+            rotten_tomatoes: JSON.parse(body).Ratings[1].Value
+          },
+        country: JSON.parse(body).Country,
+        language: JSON.parse(body).Language,
+        plot: JSON.parse(body).Plot,
+        cast: JSON.parse(body).Actors
+      }
+      console.log(JSON.stringify(queryResults, null, 2))
+    }
+  })
 }
 
 module.exports = {
