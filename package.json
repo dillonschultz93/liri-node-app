@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/dillonschultz93/liri-node-app#readme",
   "dependencies": {
+    "date-and-time": "^0.6.2",
     "node-spotify-api": "^1.0.7",
     "request": "^2.83.0",
     "twitter": "^1.7.1"
