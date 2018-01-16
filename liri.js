@@ -1,6 +1,5 @@
 // imports
 const nodeCommands = require('./commands.js')
-const fileSystem = require('fs')
 
 
 // input variables
@@ -13,12 +12,19 @@ process.stdout.write('\x1B[2J\x1B[3J\x1B[H')
 switch(command){
   case 'my-tweets':
     nodeCommands.twitterCommand()
+    nodeCommands.writeToLog(command)
   break;
   case 'spotify-this-song':
     nodeCommands.spotifyCommand(value)
+    nodeCommands.writeToLog(command, value)
   break;
   case 'movie-this':
     nodeCommands.omdbCommand(value)
+    nodeCommands.writeToLog(command, value)
+  break;
+  case 'do-what-it-says':
+    nodeCommands.documentRead(value)
+    nodeCommands.writeToLog(command)
   break;
   default:
     console.log('---------------------------------')
